@@ -20,6 +20,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sioconnect.Adapter.accueilAdapter;
 import com.example.sioconnect.AncientEtudiant.AncientEtudiant;
+import com.example.sioconnect.user.Profil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,12 +63,17 @@ public class Accueil extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.menu_base) {
-            Toast.makeText(this, "Other menu selected", Toast.LENGTH_LONG).show();
+
             return true;
         } else if (item.getItemId() == R.id.menu_settings) {
-            Toast.makeText(this, "Settings menu selected", Toast.LENGTH_LONG).show();
+
             return true;
-        } return super.onOptionsItemSelected(item);
+        } else if (item.getItemId()==R.id.profil) {
+            Intent profil=new Intent(this, Profil.class);
+            profil.putExtra("token",Token);
+            startActivity(profil);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void RequestAccueil(){
