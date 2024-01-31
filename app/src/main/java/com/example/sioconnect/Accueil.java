@@ -84,6 +84,7 @@ public class Accueil extends AppCompatActivity {
 
     public void processAccueil(String response){
         try {
+            System.out.println(response);
             JSONArray ja=new JSONArray(response);
             int taille=ja.length();
             for (int i=0;i<taille;i++){
@@ -97,7 +98,7 @@ public class Accueil extends AppCompatActivity {
                 AncientEtudiant etu=new AncientEtudiant(jo.getInt("etudiant_id"),jo.getString("etudiant_nom"), jo.getString("etudiant_prenom"), jo.getInt("etudiant_telephone"),
                         jo.getString("etudiant_mail"),jo.getInt("etudiant_promo"),bo, jo.getInt("id_categorie"));
                 etudiants.add(etu);
-                System.out.println(jo);
+
             }
             accueilAdapter adapter=new accueilAdapter(etudiants);
             rvAccueil.setAdapter(adapter);
@@ -110,7 +111,7 @@ public class Accueil extends AppCompatActivity {
     }
 
     public void gereErreur(Throwable t){
-        Toast.makeText(this,"pblm de co",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"connexion dépassé reconnecté vous",Toast.LENGTH_LONG).show();
         Log.e("Connexion",
                 "prblm de co "+t
         );
