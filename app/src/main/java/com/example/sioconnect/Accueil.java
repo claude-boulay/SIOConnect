@@ -20,6 +20,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sioconnect.Adapter.accueilAdapter;
 import com.example.sioconnect.AncientEtudiant.AncientEtudiant;
+import com.example.sioconnect.Classe.Webservice;
+import com.example.sioconnect.Travail.addWork;
 import com.example.sioconnect.user.Profil;
 
 import org.json.JSONArray;
@@ -72,12 +74,18 @@ public class Accueil extends AppCompatActivity {
             Intent profil=new Intent(this, Profil.class);
             profil.putExtra("token",Token);
             startActivity(profil);
+        }else if(item.getItemId()==R.id.addWork){
+            Intent addWork=new Intent(this,com.example.sioconnect.Travail.addWork.class);
+            addWork.putExtra("token",Token);
+            startActivity(addWork);
         }
         return super.onOptionsItemSelected(item);
     }
 
     public void RequestAccueil(){
-        StringRequest stringRequest=new StringRequest(Request.Method.GET,"http://192.168.0.106/~claude.boulay/ppe/Annuaire_PPE/public/webservice/getAncienEtudiants",this::processAccueil,this::gereErreur){
+        Webservice annuaire=new Webservice();
+        String url= annuaire.Addurl("getAncienEtudiants");
+        StringRequest stringRequest=new StringRequest(Request.Method.GET,url,this::processAccueil,this::gereErreur){
             @Override
             public Map<String,String> getHeaders() throws AuthFailureError {
                 Map<String,String> header=new HashMap<String,String>();
@@ -101,8 +109,8 @@ public class Accueil extends AppCompatActivity {
                 }else{
                      bo=false;
                 }
-                AncientEtudiant etu=new AncientEtudiant(jo.getInt("etudiant_id"),jo.getString("etudiant_nom"), jo.getString("etudiant_prenom"), jo.getInt("etudiant_telephone"),
-                        jo.getString("etudiant_mail"),jo.getInt("etudiant_promo"),bo, jo.getInt("id_categorie"));
+                AncientEtudiant etu=new AncientEtudiant(jo.getInt("etudiant_id"),jo.getString("etudiant_nom"), jo.getString("etudiant_prenom"), jo.getString("etudiant_telephone"),
+                        jo.getString("etudiant_mail"),jo.getString("etudiant_promo"),bo, 0);
                 etudiants.add(etu);
 
             }

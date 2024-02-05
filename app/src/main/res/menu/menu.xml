@@ -16,6 +16,8 @@
         <menu android:id="@+id/sousmenu">
             <item android:id="@+id/profil"
                 android:title="profil"/>
+            <item android:id="@+id/addWork"
+                android:title="ajout d'Emploi"/>
         </menu>
     </item>
 

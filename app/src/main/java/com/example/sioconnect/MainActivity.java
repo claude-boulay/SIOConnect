@@ -13,6 +13,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.sioconnect.Classe.Webservice;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONObject;
@@ -45,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void requestConnexion(){
-        String url ="http://192.168.0.106/~claude.boulay/ppe/Annuaire_PPE/public/webservice/connexion";
+        Webservice Annuaire=new Webservice();
+        String url =Annuaire.Addurl("connexion");
         StringRequest stringRequest=new StringRequest(
                 Request.Method.POST,
                 url,
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("Token",Token);
                 Intent i= new Intent(this, Accueil.class);
                 i.putExtra("token",Token);
+
 
                 Toast.makeText(this,jo.getString("message"), Toast.LENGTH_LONG).show();
                 startActivity(i);

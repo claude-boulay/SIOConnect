@@ -47,6 +47,14 @@ public class User {
         this.type = type;
     }
 
+    public String getIdentifiant() {
+        return identifiant;
+    }
+
+    public void setIdentifiant(String identifiant) {
+        this.identifiant = identifiant;
+    }
+
     public User(){
 
     }

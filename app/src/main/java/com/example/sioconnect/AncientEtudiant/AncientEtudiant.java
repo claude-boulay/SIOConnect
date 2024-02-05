@@ -5,9 +5,9 @@ public class AncientEtudiant {
     int id;
     String nom;
     String prenom;
-    int telephone;
+    String telephone;
     String mail;
-    int promo;
+    String promo;
     boolean travail;
     int id_categorie;
 
@@ -35,11 +35,11 @@ public class AncientEtudiant {
         this.prenom = prenom;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
@@ -51,11 +51,11 @@ public class AncientEtudiant {
         this.mail = mail;
     }
 
-    public int getPromo() {
+    public String getPromo() {
         return promo;
     }
 
-    public void setPromo(int promo) {
+    public void setPromo(String promo) {
         this.promo = promo;
     }
 
@@ -78,7 +78,7 @@ public class AncientEtudiant {
 
     }
 
-    public AncientEtudiant(int id, String nom, String prenom, int telephone, String mail, int promo, boolean travail, int id_categorie) {
+    public AncientEtudiant(int id, String nom, String prenom, String telephone, String mail, String promo, boolean travail, int id_categorie) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
