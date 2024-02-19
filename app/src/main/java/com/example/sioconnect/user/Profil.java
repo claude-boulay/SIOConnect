@@ -2,6 +2,7 @@ package com.example.sioconnect.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,10 +34,11 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Profil extends AppCompatActivity {
+public class Profil extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     String Token;
     RequestQueue fileRequetes;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,17 @@ public class Profil extends AppCompatActivity {
         Intent profil=getIntent();
         Token=profil.getStringExtra("token");
         fileRequetes = Volley.newRequestQueue(this);
+        //attribution du spinner de la vue
+        spinner=findViewById(R.id.spinner);
+        //intégration des donnée dans le spinner
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(
+                this,
+                R.array.travail_categorie,
+                android.R.layout.simple_spinner_item
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
 
         requestProfil();
 
@@ -94,6 +110,7 @@ public class Profil extends AppCompatActivity {
             JSONObject ju=ja.getJSONObject(0);
             JSONObject je=ja.getJSONObject(1);
             User  utilisateur=new User(ju.getInt("Id_user"), ju.getString("identifiant"), ju.getString("nom_user"),ju.getString("prenom_user"),ju.getString("user_type"));
+
             //attribution des données user au champ
             TextView email=findViewById(R.id.identifiant);
             email.setText(utilisateur.getIdentifiant());
@@ -111,6 +128,8 @@ public class Profil extends AppCompatActivity {
                 }else{
                     travail=false;
                 }
+
+
                 AncientEtudiant etu= new AncientEtudiant(je.getInt("etudiant_id"), je.getString("etudiant_nom"),je.getString("etudiant_prenom"),je.getString("etudiant_telephone"),je.getString("etudiant_mail"), je.getString("etudiant_promo"),travail, je.getInt("id_categorie") );
                 TextView tel=findViewById(R.id.phonenumber);
                 if(etu.getTelephone()!=null && etu.getTelephone()!=""){
@@ -119,6 +138,12 @@ public class Profil extends AppCompatActivity {
                 if(etu.getPromo()!=null && etu.getPromo()!=""){
                     TextView promo=findViewById(R.id.user_promo);
                     promo.setText(etu.getPromo());
+                }
+                if(etu.getId_categorie()==12){
+
+                    spinner.setSelection(10);
+                }else{
+                    spinner.setSelection(etu.getId_categorie()-1);
                 }
             }
         } catch (JSONException e) {
@@ -135,20 +160,23 @@ public class Profil extends AppCompatActivity {
     }
 
     public void Enregistrer(View view){
+        int index=spinner.getSelectedItemPosition();
+        long id_cat=spinner.getAdapter().getItemId(index);
 
+        System.out.println(id_cat);
         TextView email= findViewById(R.id.identifiant);
         TextView tel=findViewById(R.id.phonenumber);
         TextView nom=findViewById(R.id.nom_user);
         TextView prenom=findViewById(R.id.prenom_user);
         TextView promo=findViewById(R.id.user_promo);
 
-        requestSendProfil(email.getText().toString(),tel.getText().toString(),nom.getText().toString(),prenom.getText().toString(),promo.getText().toString());
+        requestSendProfil(email.getText().toString(),tel.getText().toString(),nom.getText().toString(),prenom.getText().toString(),promo.getText().toString(),id_cat);
     }
 
-    public void requestSendProfil(String email,String tel,String nom,String prenom,String promo){
+    public void requestSendProfil(String email,String tel,String nom,String prenom,String promo,long id_cat){
         Webservice annuaire=new Webservice();
         String url=annuaire.Addurl("addInformation");
-
+        String id= ""+id_cat;
         StringRequest sendProfil=new StringRequest(Request.Method.POST,url,this::processSendProfil,this::gereErreur){
             public Map<String,String> getParams(){
                 Map<String,String> params=new HashMap<String,String>();
@@ -157,6 +185,7 @@ public class Profil extends AppCompatActivity {
                 params.put("nom",nom);
                 params.put("prenom",prenom);
                 params.put("promo",promo);
+                params.put("id_cat",id);
 
                 return params;
             }
@@ -174,6 +203,7 @@ public class Profil extends AppCompatActivity {
 
     public void processSendProfil(String response){
         try {
+            System.out.println(response);
             JSONObject ja=new JSONObject(response);
             System.out.println(ja);
             String retour=ja.getString("retour");
@@ -202,4 +232,8 @@ public class Profil extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
 }
