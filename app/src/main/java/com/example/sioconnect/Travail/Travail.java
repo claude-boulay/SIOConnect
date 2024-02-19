@@ -12,20 +12,20 @@ public class Travail {
     private Organisation org;
     private AncientEtudiant etu;
     private String profession;
-    private Date debut;
-    private Date fin;
+    private String debut;
+    private String fin;
 
 
-    public Travail(int id, Organisation org, AncientEtudiant etu, String profession, Date debut, Date fin) {
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
-        String test=simpleDateFormat.format(fin);
+    public Travail( Organisation org,  String profession, String debut, String fin) {
+        //SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
+        //String test=simpleDateFormat.format(fin);
 
-        this.id = id;
+
         this.org = org;
-        this.etu = etu;
+
         this.profession = profession;
-        this.debut = new Date(simpleDateFormat.format(debut));
-        this.fin = new Date(test);
+        this.debut =debut;
+        this.fin = fin;
     }
 
     public int getId() {
@@ -60,19 +60,19 @@ public class Travail {
         this.profession = profession;
     }
 
-    public Date getDebut() {
+    public String getDebut() {
         return debut;
     }
 
-    public void setDebut(Date debut) {
+    public void setDebut(String debut) {
         this.debut = debut;
     }
 
-    public Date getFin() {
+    public String getFin() {
         return fin;
     }
 
-    public void setFin(Date fin) {
+    public void setFin(String fin) {
         this.fin = fin;
     }
 }

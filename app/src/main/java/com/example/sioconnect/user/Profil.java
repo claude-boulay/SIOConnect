@@ -2,7 +2,6 @@ package com.example.sioconnect.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,11 +20,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.sioconnect.Accueil;
 import com.example.sioconnect.AncientEtudiant.AncientEtudiant;
 import com.example.sioconnect.Classe.Webservice;
 import com.example.sioconnect.MainActivity;
 import com.example.sioconnect.R;
-import com.example.sioconnect.Travail.addWork;
+import com.example.sioconnect.Travail.showYourJob;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -75,8 +75,10 @@ public class Profil extends AppCompatActivity implements AdapterView.OnItemClick
         if (item.getItemId() == R.id.menu_base) {
 
             return true;
-        } else if (item.getItemId() == R.id.menu_settings) {
-
+        } else if (item.getItemId() == R.id.menu_accueil) {
+            Intent accueil=new Intent(this, Accueil.class);
+            accueil.putExtra("token",Token);
+            startActivity(accueil);
             return true;
         } else if (item.getItemId()==R.id.profil) {
             Toast.makeText(this,"Vous êtes déjà sur l'onglet Profil",Toast.LENGTH_SHORT).show();
@@ -84,6 +86,10 @@ public class Profil extends AppCompatActivity implements AdapterView.OnItemClick
             Intent addWork=new Intent(this, com.example.sioconnect.Travail.addWork.class);
             addWork.putExtra("token",Token);
             startActivity(addWork);
+        }else if (item.getItemId()==R.id.showEmploi) {
+            Intent showEmploi=new Intent(this, showYourJob.class);
+            showEmploi.putExtra("token",Token);
+            startActivity(showEmploi);
         }
         return super.onOptionsItemSelected(item);
     }

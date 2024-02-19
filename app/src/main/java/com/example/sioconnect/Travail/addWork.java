@@ -17,6 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.sioconnect.Accueil;
 import com.example.sioconnect.Classe.Webservice;
 import com.example.sioconnect.R;
 
@@ -51,8 +52,10 @@ public class addWork extends AppCompatActivity {
         if (item.getItemId() == R.id.menu_base) {
 
             return true;
-        } else if (item.getItemId() == R.id.menu_settings) {
-
+        } else if (item.getItemId() == R.id.menu_accueil) {
+            Intent accueil=new Intent(this, Accueil.class);
+            accueil.putExtra("token",Token);
+            startActivity(accueil);
             return true;
         } else if (item.getItemId()==R.id.profil) {
             Intent profil=new Intent(this, com.example.sioconnect.user.Profil.class);
@@ -61,6 +64,10 @@ public class addWork extends AppCompatActivity {
         } else if (item.getItemId()==R.id.addWork) {
             Toast.makeText(this,"Vous êtes déjà sur l'onglet d'Ajout de travail",Toast.LENGTH_SHORT).show();
 
+        }else if (item.getItemId()==R.id.showEmploi) {
+            Intent showEmploi=new Intent(this, showYourJob.class);
+            showEmploi.putExtra("token",Token);
+            startActivity(showEmploi);
         }
         return super.onOptionsItemSelected(item);
     }

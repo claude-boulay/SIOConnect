@@ -63,13 +63,11 @@ public class Accueil extends AppCompatActivity {
 //function pour aplliquer des actions selon le choix de l'utilisateur dans le menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        if (item.getItemId() == R.id.menu_base) {
-
+        if (item.getItemId() == R.id.menu_accueil) {
+            Toast.makeText(this,"vous êtes déjà sur l'accueil",Toast.LENGTH_SHORT).show();
             return true;
-        } else if (item.getItemId() == R.id.menu_settings) {
-
-            return true;
-        } else if (item.getItemId()==R.id.profil) {
+        }
+         else if (item.getItemId()==R.id.profil) {
             Intent profil=new Intent(this, Profil.class);
             profil.putExtra("token",Token);
             startActivity(profil);
