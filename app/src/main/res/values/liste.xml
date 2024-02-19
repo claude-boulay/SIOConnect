@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="travail_categorie">
+        <item>programmeur analyste</item>
+        <item>développeur web</item>
+        <item>programmeur d application</item>
+        <item>Chargé d études informatiques</item>
+        <item>développeur d application mobiles</item>
+        <item>technicien d études informatiques</item>
+        <item>responsable de services applicatifs</item>
+        <item>analystes d exploitation informatique</item>
+        <item>gestionnaire de parc informatique</item>
+        <item>administrateur systèmes et réseaux</item>
+        <item>autres</item>
+    </string-array>
+</resources>

@@ -55,11 +55,12 @@ public class addWork extends AppCompatActivity {
 
             return true;
         } else if (item.getItemId()==R.id.profil) {
-            Toast.makeText(this,"Vous êtes déjà sur l'onglet Profil",Toast.LENGTH_SHORT).show();
+            Intent profil=new Intent(this, com.example.sioconnect.user.Profil.class);
+            profil.putExtra("token",Token);
+            startActivity(profil);
         } else if (item.getItemId()==R.id.addWork) {
-            Intent addWork=new Intent(this, com.example.sioconnect.Travail.addWork.class);
-            addWork.putExtra("token",Token);
-            startActivity(addWork);
+            Toast.makeText(this,"Vous êtes déjà sur l'onglet d'Ajout de travail",Toast.LENGTH_SHORT).show();
+
         }
         return super.onOptionsItemSelected(item);
     }

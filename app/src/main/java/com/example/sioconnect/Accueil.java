@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.sioconnect.Adapter.accueilAdapter;
 import com.example.sioconnect.AncientEtudiant.AncientEtudiant;
 import com.example.sioconnect.Classe.Webservice;
-import com.example.sioconnect.Travail.addWork;
+import com.example.sioconnect.Travail.showYourJob;
 import com.example.sioconnect.user.Profil;
 
 import org.json.JSONArray;
@@ -55,13 +54,13 @@ public class Accueil extends AppCompatActivity {
 
 
     }
-
+//integration du menu dans la vue
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
     }
-
+//function pour aplliquer des actions selon le choix de l'utilisateur dans le menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.menu_base) {
@@ -78,6 +77,10 @@ public class Accueil extends AppCompatActivity {
             Intent addWork=new Intent(this,com.example.sioconnect.Travail.addWork.class);
             addWork.putExtra("token",Token);
             startActivity(addWork);
+        } else if (item.getItemId()==R.id.showEmploi) {
+            Intent showEmploi=new Intent(this, showYourJob.class);
+            showEmploi.putExtra("token",Token);
+            startActivity(showEmploi);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -98,7 +101,7 @@ public class Accueil extends AppCompatActivity {
 
     public void processAccueil(String response){
         try {
-            System.out.println(response);
+            //System.out.println(response);
             JSONArray ja=new JSONArray(response);
             int taille=ja.length();
             for (int i=0;i<taille;i++){

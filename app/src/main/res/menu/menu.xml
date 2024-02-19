@@ -18,6 +18,8 @@
                 android:title="profil"/>
             <item android:id="@+id/addWork"
                 android:title="ajout d'Emploi"/>
+            <item android:id="@+id/showEmploi"
+                android:title="Liste des emplois"/>
         </menu>
     </item>
 
