@@ -113,7 +113,7 @@ public class showYourJob extends AppCompatActivity {
                     System.out.println(unEmploi);
                     mesTravails.add(unEmploi);
                 }
-                YoursJobsAdapter adapter=new YoursJobsAdapter(mesTravails);
+                YoursJobsAdapter adapter=new YoursJobsAdapter(mesTravails,Token);
                 rvs.setAdapter(adapter);
                 rvs.setLayoutManager(new LinearLayoutManager(this));
             }else if(jo.getString("retour")=="Null"){

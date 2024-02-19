@@ -18,9 +18,11 @@ import java.util.ArrayList;
 public class YoursJobsAdapter extends RecyclerView.Adapter<YoursJobsViewHolder>{
 
     private ArrayList<Travail> Travails;
-    public YoursJobsAdapter(ArrayList<Travail> T){
+    public YoursJobsAdapter(ArrayList<Travail> T,String token){
         this.Travails=T;
+        this.Token=token;
     }
+    String Token;
 
     @NonNull
     @Override
@@ -29,7 +31,7 @@ public class YoursJobsAdapter extends RecyclerView.Adapter<YoursJobsViewHolder>{
         LayoutInflater inflater=LayoutInflater.from(context);
         View YoursJobs;
         YoursJobs=inflater.inflate(R.layout.recyclerview_yours_jobs,parent,false);
-        YoursJobsViewHolder viewHolder=new YoursJobsViewHolder(YoursJobs);
+        YoursJobsViewHolder viewHolder=new YoursJobsViewHolder(YoursJobs,Token);
 
         return viewHolder;
 
