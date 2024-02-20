@@ -99,7 +99,7 @@ public class Accueil extends AppCompatActivity {
 
     public void processAccueil(String response){
         try {
-            //System.out.println(response);
+            System.out.println(response);
             JSONArray ja=new JSONArray(response);
             int taille=ja.length();
             for (int i=0;i<taille;i++){
@@ -128,7 +128,7 @@ public class Accueil extends AppCompatActivity {
     public void gereErreur(Throwable t){
         Toast.makeText(this,"connexion dépassé reconnecté vous",Toast.LENGTH_LONG).show();
         Log.e("Connexion",
-                "prblm de co "+t
+                "Rechargez la page "+t
         );
     }
 }

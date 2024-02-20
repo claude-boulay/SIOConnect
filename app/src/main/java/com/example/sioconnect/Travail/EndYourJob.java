@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,8 @@ import com.example.sioconnect.Accueil;
 import com.example.sioconnect.Classe.Webservice;
 import com.example.sioconnect.Organisation.Organisation;
 import com.example.sioconnect.R;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,9 +40,9 @@ public class EndYourJob extends AppCompatActivity {
 
     TextView prof;
     TextView orgN;
-    TextView fin;
-    TextView site;
-    TextView tel;
+    TextInputLayout fin;
+    TextInputEditText  site;
+    EditText tel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,7 +123,7 @@ public class EndYourJob extends AppCompatActivity {
             TextView debut=findViewById(R.id.Mydate_debut);
             debut.setText(emploi.getDebut());
              fin=findViewById(R.id.MydateFin);
-            fin.setText(emploi.getFin());
+            fin.getEditText().setText(emploi.getFin());
              tel=findViewById(R.id.MyorgPhone);
             tel.setText(org.getTel());
              site=findViewById(R.id.Myorgsite);
@@ -142,10 +145,10 @@ public class EndYourJob extends AppCompatActivity {
     public void ModifJob(View view){
         String telorg=tel.getText().toString();
         String siteorg=site.getText().toString();
-        String finTravail=fin.getText().toString();
+        String finTravail=fin.getEditText().getText().toString();
         Webservice Annuaire=new Webservice();
         String url=Annuaire.Addurl("UpdateJob");
-
+        requestMJob(telorg,siteorg,finTravail,url);
     }
 
     public void requestMJob(String telorg,String siteorg,String finTravail,String url){
@@ -158,6 +161,7 @@ public class EndYourJob extends AppCompatActivity {
 
             public Map<String,String> getParams() {
                 Map<String,String> params=new HashMap<>();
+                params.put("idorg",""+idorg);
                 params.put("telorg",telorg);
                 params.put("siteorg",siteorg);
                 params.put("finTravail",finTravail);

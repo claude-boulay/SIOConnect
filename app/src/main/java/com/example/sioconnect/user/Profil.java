@@ -242,4 +242,35 @@ public class Profil extends AppCompatActivity implements AdapterView.OnItemClick
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
     }
+
+    public void SuppresCompte(View view){
+        Webservice Annuaire=new Webservice();
+        String url=Annuaire.Addurl("SuppressProfil");
+        StringRequest stringRequest=new StringRequest(Request.Method.POST,url,this::suppressProfil,this::gereErreur){
+            public Map<String,String> getHeaders() throws AuthFailureError {
+                Map<String, String> header = new HashMap<String, String>();
+                header.put("Authorization", Token);
+                return header;
+            }
+        };
+        fileRequetes.add(stringRequest);
+
+    }
+
+    public void suppressProfil(String response){
+        try {
+            JSONObject ja=new JSONObject(response);
+            if (ja.getBoolean("retour")==true){
+                Toast.makeText(this,"Demande de suppression enregistrer dans la base de donnée",Toast.LENGTH_LONG).show();
+
+            }else if(ja.getBoolean("retour")==false){
+                Toast.makeText(this,"Annulation de la suppression réussie",Toast.LENGTH_LONG).show();
+            }else{
+                Toast.makeText(this,"échec de la demande de suppression",Toast.LENGTH_LONG).show();
+            }
+        }catch (Exception e){
+            gereErreur(e);
+        }
+
+    }
 }
