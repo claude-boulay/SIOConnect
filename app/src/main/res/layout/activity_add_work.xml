@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#673AB7"
     tools:context=".Travail.addWork">
 
     <EditText
@@ -13,6 +14,7 @@
         android:layout_marginBottom="19dp"
         android:ems="10"
         android:inputType="text"
+        android:textColor="#FAFAFA"
         app:layout_constraintBottom_toTopOf="@+id/new_nom_org"
         app:layout_constraintStart_toStartOf="@+id/new_nom_org" />
 
@@ -24,6 +26,7 @@
         android:layout_marginBottom="43dp"
         android:ems="10"
         android:inputType="text"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/new_org_adresse"
         app:layout_constraintStart_toEndOf="@+id/textView14" />
 
@@ -34,6 +37,7 @@
         android:layout_marginBottom="20dp"
         android:ems="10"
         android:inputType="text"
+        android:textColor="#FFFDFD"
         app:layout_constraintBottom_toTopOf="@+id/new_org_tel"
         app:layout_constraintStart_toStartOf="@+id/new_org_tel" />
 
@@ -45,6 +49,7 @@
         android:layout_marginTop="64dp"
         android:ems="10"
         android:inputType="text"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/new_org_tel" />
 
@@ -56,6 +61,7 @@
         android:layout_marginBottom="4dp"
         android:ems="10"
         android:inputType="phone"
+        android:textColor="#FAFAFA"
         app:layout_constraintBottom_toBottomOf="@+id/textView15"
         app:layout_constraintStart_toEndOf="@+id/textView15" />
 
@@ -67,6 +73,7 @@
         android:layout_marginBottom="11dp"
         android:ems="10"
         android:inputType="text"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/new_date_fin"
         app:layout_constraintEnd_toEndOf="@+id/new_date_fin" />
 
@@ -76,6 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="jour-mois-année"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_org_site" />
@@ -86,6 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:text="date de début"
+        android:textColor="#FFFFFF"
         app:layout_constraintBaseline_toBaselineOf="@+id/new_date_debut"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -94,6 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="nom de l'emploi"
+        android:textColor="#F8F1F1"
         app:layout_constraintBottom_toBottomOf="@+id/new_emploi"
         app:layout_constraintEnd_toStartOf="@+id/new_emploi" />
 
@@ -103,6 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:text="entreprise"
+        android:textColor="#FAFAFA"
         app:layout_constraintBaseline_toBaselineOf="@+id/new_nom_org"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -113,6 +124,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginBottom="340dp"
         android:text="tel entreprise"
+        android:textColor="#FFFCFC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -122,6 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:text="adresse"
+        android:textColor="#FFFFFF"
         app:layout_constraintBaseline_toBaselineOf="@+id/new_org_adresse"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -131,6 +144,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="site entreprise"
+        android:textColor="#FDFDFD"
         app:layout_constraintBaseline_toBaselineOf="@+id/new_org_site"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -142,6 +156,7 @@
         android:layout_marginBottom="12dp"
         android:ems="10"
         android:inputType="text"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintStart_toEndOf="@+id/textView19" />
 
@@ -151,6 +166,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
         android:text="date de fin"
+        android:textColor="#F1F1F1"
         app:layout_constraintBaseline_toBaselineOf="@+id/new_date_fin"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -160,6 +176,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
         android:layout_marginBottom="25dp"
+        android:background="@android:drawable/editbox_background"
         android:onClick="sendJob"
         android:text="Enregistrer l'emploi"
         app:layout_constraintBottom_toBottomOf="parent"

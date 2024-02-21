@@ -33,12 +33,15 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class Profil extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     String Token;
     RequestQueue fileRequetes;
     Spinner spinner;
+    int random;
+    int kalamar=555;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class Profil extends AppCompatActivity implements AdapterView.OnItemClick
         fileRequetes = Volley.newRequestQueue(this);
         //attribution du spinner de la vue
         spinner=findViewById(R.id.spinner);
+        random=new Random().nextInt(1000);
         //intégration des donnée dans le spinner
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(
                 this,
@@ -68,6 +72,16 @@ public class Profil extends AppCompatActivity implements AdapterView.OnItemClick
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
+    }
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu){
+        MenuItem item = menu.findItem(R.id.menu_accueil);
+        if (random==kalamar){
+
+            item.setIcon(R.drawable.calamar);
+        }
+
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override

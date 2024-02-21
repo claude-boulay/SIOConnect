@@ -22,6 +22,7 @@ import com.example.sioconnect.Accueil;
 import com.example.sioconnect.Classe.Webservice;
 import com.example.sioconnect.Organisation.Organisation;
 import com.example.sioconnect.R;
+import com.example.sioconnect.user.Profil;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -31,6 +32,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class EndYourJob extends AppCompatActivity {
     String Token;
@@ -43,6 +45,8 @@ public class EndYourJob extends AppCompatActivity {
     TextInputLayout fin;
     TextInputEditText  site;
     EditText tel;
+    int random;
+    int kalamar=555;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,7 @@ public class EndYourJob extends AppCompatActivity {
         Token=i.getStringExtra("token");
         idorg=i.getIntExtra("idJob",0);
         fileRequete= Volley.newRequestQueue(this);
+        random=new Random().nextInt(1000);
         requestJob();
     }
 
@@ -60,6 +65,16 @@ public class EndYourJob extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
+    }
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu){
+        MenuItem item = menu.findItem(R.id.menu_accueil);
+        if (random==kalamar){
+
+            item.setIcon(R.drawable.calamar);
+        }
+
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -73,7 +88,9 @@ public class EndYourJob extends AppCompatActivity {
             startActivity(accueil);
             return true;
         } else if (item.getItemId()==R.id.profil) {
-            Toast.makeText(this,"Vous êtes déjà sur l'onglet Profil",Toast.LENGTH_SHORT).show();
+            Intent profil=new Intent(this, Profil.class);
+            profil.putExtra("token",Token);
+            startActivity(profil);
         } else if (item.getItemId()==R.id.addWork) {
             Intent addWork=new Intent(this, com.example.sioconnect.Travail.addWork.class);
             addWork.putExtra("token",Token);

@@ -30,6 +30,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class Accueil extends AppCompatActivity {
     RequestQueue Filerequete;
@@ -37,6 +38,8 @@ public class Accueil extends AppCompatActivity {
     RecyclerView rvAccueil;
 
     ArrayList<AncientEtudiant> etudiants= new ArrayList<AncientEtudiant>();
+    int random;
+    int kalamar=555;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,7 @@ public class Accueil extends AppCompatActivity {
        // onCreateOptionsMenu(findViewById(R.id.menu));
         //getActionBar().show();
         Filerequete= Volley.newRequestQueue(this);
+        random=new Random().nextInt(1000);
 
         RequestAccueil();
 
@@ -57,8 +61,19 @@ public class Accueil extends AppCompatActivity {
 //integration du menu dans la vue
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
+    }
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu){
+        MenuItem item = menu.findItem(R.id.menu_accueil);
+        if (random==kalamar){
+
+            item.setIcon(R.drawable.calamar);
+        }
+
+        return super.onPrepareOptionsMenu(menu);
     }
 //function pour aplliquer des actions selon le choix de l'utilisateur dans le menu
     @Override
@@ -115,7 +130,7 @@ public class Accueil extends AppCompatActivity {
                 etudiants.add(etu);
 
             }
-            accueilAdapter adapter=new accueilAdapter(etudiants);
+            accueilAdapter adapter=new accueilAdapter(etudiants,Token);
             rvAccueil.setAdapter(adapter);
             rvAccueil.setLayoutManager(new LinearLayoutManager(this));
 

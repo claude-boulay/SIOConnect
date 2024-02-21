@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#673AB7"
     tools:context=".Travail.EndYourJob">
 
     <TextView
@@ -13,6 +14,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="72dp"
         android:text="Profession"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
+        android:textColor="#FFFDFD"
         app:layout_constraintStart_toStartOf="@+id/Mydate_debut"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:text="Debut"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/textView23"
         app:layout_constraintStart_toEndOf="@+id/textView23"
@@ -41,6 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="47dp"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/MydateFin"
         app:layout_constraintStart_toStartOf="@+id/MydateFin"
         app:layout_constraintTop_toBottomOf="@+id/Myprofession" />
@@ -52,6 +57,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="37dp"
         android:text="Fin"
+        android:textColor="#FBFBFB"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
@@ -62,6 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
         android:text="Entreprise"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/textView23"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
@@ -71,6 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="45dp"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/MyorgPhone"
         app:layout_constraintEnd_toStartOf="@+id/MydateFin"
         app:layout_constraintStart_toStartOf="@+id/MydateFin" />
@@ -83,6 +91,8 @@
         android:layout_marginTop="45dp"
         android:layout_marginEnd="54dp"
         android:layout_marginBottom="51dp"
+        android:textColorHint="#FFFFFF"
+        app:hintTextColor="#FDFDFD"
         app:layout_constraintBottom_toBottomOf="@+id/Myorg"
         app:layout_constraintEnd_toEndOf="@+id/Myorgsite"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
@@ -92,6 +102,8 @@
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:hint="dd-mm-yyyy"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,6 +115,7 @@
         android:layout_marginTop="59dp"
         android:layout_marginEnd="74dp"
         android:text="Téléphone"
+        android:textColor="#FFFEFE"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/MyorgPhone"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,6 +130,7 @@
         android:layout_marginBottom="153dp"
         android:ems="10"
         android:inputType="phone"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView27"
@@ -130,6 +144,7 @@
         android:layout_marginTop="57dp"
         android:layout_marginEnd="121dp"
         android:text="Site"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/Myorgsite"
         app:layout_constraintStart_toStartOf="parent"
@@ -153,6 +168,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
+        android:background="@android:drawable/editbox_background"
         android:onClick="ModifJob"
         android:text="Modifier"
         app:layout_constraintEnd_toEndOf="parent"
@@ -167,6 +183,8 @@
         android:layout_marginEnd="29dp"
         android:layout_marginBottom="29dp"
         android:hint="http://example.com"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView29"

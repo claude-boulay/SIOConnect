@@ -17,8 +17,9 @@ import java.util.ArrayList;
 public class accueilAdapter extends RecyclerView.Adapter<accueilViewHolder> {
 
     private ArrayList<AncientEtudiant> MesAncientsEtudiants;
+    private String Token;
 
-    public accueilAdapter(ArrayList<AncientEtudiant> ae){MesAncientsEtudiants=ae;}
+    public accueilAdapter(ArrayList<AncientEtudiant> ae,String tk){MesAncientsEtudiants=ae;Token=tk;}
 
     @NonNull
     @Override
@@ -28,7 +29,8 @@ public class accueilAdapter extends RecyclerView.Adapter<accueilViewHolder> {
         LayoutInflater inflater=LayoutInflater.from(context);
         View AccueilView;
         AccueilView=inflater.inflate(R.layout.recyclerview_accueil,parent,false);
-        accueilViewHolder viewHolder=new accueilViewHolder(AccueilView);
+        accueilViewHolder viewHolder=new accueilViewHolder(AccueilView,Token);
+
 
         return viewHolder;
     }

@@ -26,11 +26,14 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class addWork extends AppCompatActivity {
 
     String Token;
     RequestQueue fileRequete;
+    int random;
+    int kalamar=555;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,12 +42,23 @@ public class addWork extends AppCompatActivity {
         Intent profil=getIntent();
         Token=profil.getStringExtra("token");
         fileRequete= Volley.newRequestQueue(this);
+        random=new Random().nextInt(1000);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
+    }
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu){
+        MenuItem item = menu.findItem(R.id.menu_accueil);
+        if (random==kalamar){
+
+            item.setIcon(R.drawable.calamar);
+        }
+
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override

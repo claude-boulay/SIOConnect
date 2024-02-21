@@ -31,6 +31,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class showYourJob extends AppCompatActivity {
     String Token;
@@ -38,6 +39,8 @@ public class showYourJob extends AppCompatActivity {
 
     RecyclerView rvs;
     ArrayList<Travail> mesTravails=new ArrayList<Travail>();
+    int random;
+    int kalamar=555;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,12 +50,24 @@ public class showYourJob extends AppCompatActivity {
         Token=accueil.getStringExtra("token");
         fileRequete= Volley.newRequestQueue(this);
         rvs=(RecyclerView) findViewById(R.id.recyclerViewYourJob);
+        random=new Random().nextInt(1000);
         requestYoursJob();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu){
+        MenuItem item = menu.findItem(R.id.menu_accueil);
+        if (random==kalamar){
+
+            item.setIcon(R.drawable.calamar);
+        }
+
+        return super.onPrepareOptionsMenu(menu);
     }
     //function pour aplliquer des actions selon le choix de l'utilisateur dans le menu
     @Override
