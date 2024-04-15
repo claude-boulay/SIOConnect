@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.sioconnect.Accueil;
 import com.example.sioconnect.Adapter.YoursJobsAdapter;
 import com.example.sioconnect.Classe.Webservice;
+import com.example.sioconnect.GraphicPercentWork;
 import com.example.sioconnect.Organisation.Organisation;
 import com.example.sioconnect.R;
 import com.example.sioconnect.user.Profil;
@@ -90,6 +91,10 @@ public class showYourJob extends AppCompatActivity {
             startActivity(addWork);
         } else if (item.getItemId()==R.id.showEmploi) {
             Toast.makeText(this,"vous êtes déjà sur l'onglet vous affichant vos emplois",Toast.LENGTH_SHORT).show();
+        }else if (item.getItemId()==R.id.graphEmploi) {
+            Intent graphEmploi=new Intent(this, GraphicPercentWork.class);
+            graphEmploi.putExtra("token",Token);
+            startActivity(graphEmploi);
         }
         return super.onOptionsItemSelected(item);
     }

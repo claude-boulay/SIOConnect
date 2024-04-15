@@ -20,6 +20,8 @@
                 android:title="ajout d'Emploi"/>
             <item android:id="@+id/showEmploi"
                 android:title="Liste des emplois"/>
+            <item android:id="@+id/graphEmploi"
+                android:title="pourcentage pour les premiers emploi"/>
         </menu>
     </item>
 

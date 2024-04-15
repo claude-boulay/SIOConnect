@@ -19,6 +19,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sioconnect.Accueil;
 import com.example.sioconnect.Classe.Webservice;
+import com.example.sioconnect.GraphicPercentWork;
 import com.example.sioconnect.R;
 
 import org.json.JSONException;
@@ -82,6 +83,10 @@ public class addWork extends AppCompatActivity {
             Intent showEmploi=new Intent(this, showYourJob.class);
             showEmploi.putExtra("token",Token);
             startActivity(showEmploi);
+        }else if (item.getItemId()==R.id.graphEmploi) {
+            Intent graphEmploi=new Intent(this, GraphicPercentWork.class);
+            graphEmploi.putExtra("token",Token);
+            startActivity(graphEmploi);
         }
         return super.onOptionsItemSelected(item);
     }

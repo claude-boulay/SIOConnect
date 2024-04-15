@@ -17,6 +17,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".GraphicPercentWork"
+            android:exported="false" />
+        <activity
             android:name=".AncientEtudiant.jobsEtudiant"
             android:exported="false" />
         <activity

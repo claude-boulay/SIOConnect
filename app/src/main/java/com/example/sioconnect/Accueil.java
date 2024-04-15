@@ -94,6 +94,10 @@ public class Accueil extends AppCompatActivity {
             Intent showEmploi=new Intent(this, showYourJob.class);
             showEmploi.putExtra("token",Token);
             startActivity(showEmploi);
+        } else if (item.getItemId()==R.id.graphEmploi) {
+             Intent graphEmploi=new Intent(this, GraphicPercentWork.class);
+             graphEmploi.putExtra("token",Token);
+             startActivity(graphEmploi);
         }
         return super.onOptionsItemSelected(item);
     }

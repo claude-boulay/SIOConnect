@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.sioconnect.Accueil;
 import com.example.sioconnect.Adapter.JobsAdapter;
 import com.example.sioconnect.Classe.Webservice;
+import com.example.sioconnect.GraphicPercentWork;
 import com.example.sioconnect.Organisation.Organisation;
 import com.example.sioconnect.R;
 import com.example.sioconnect.Travail.Travail;
@@ -97,6 +98,10 @@ public class jobsEtudiant extends AppCompatActivity {
             Intent showEmploi=new Intent(this, showYourJob.class);
             showEmploi.putExtra("token",Token);
             startActivity(showEmploi);
+        }else if (item.getItemId()==R.id.graphEmploi) {
+            Intent graphEmploi=new Intent(this, GraphicPercentWork.class);
+            graphEmploi.putExtra("token",Token);
+            startActivity(graphEmploi);
         }
         return super.onOptionsItemSelected(item);
     }

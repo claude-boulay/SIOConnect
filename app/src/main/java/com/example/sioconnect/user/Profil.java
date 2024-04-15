@@ -23,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.sioconnect.Accueil;
 import com.example.sioconnect.AncientEtudiant.AncientEtudiant;
 import com.example.sioconnect.Classe.Webservice;
+import com.example.sioconnect.GraphicPercentWork;
 import com.example.sioconnect.MainActivity;
 import com.example.sioconnect.R;
 import com.example.sioconnect.Travail.showYourJob;
@@ -104,6 +105,10 @@ public class Profil extends AppCompatActivity implements AdapterView.OnItemClick
             Intent showEmploi=new Intent(this, showYourJob.class);
             showEmploi.putExtra("token",Token);
             startActivity(showEmploi);
+        }else if (item.getItemId()==R.id.graphEmploi) {
+            Intent graphEmploi=new Intent(this, GraphicPercentWork.class);
+            graphEmploi.putExtra("token",Token);
+            startActivity(graphEmploi);
         }
         return super.onOptionsItemSelected(item);
     }
